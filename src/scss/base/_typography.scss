@@ -1,0 +1,150 @@
+$futura-pt: 'Futura PT', sans-serif;
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 100;
+  line-height: 1;
+}
+.h1,
+h1 {
+  font-size: 8vw;
+  text-transform: uppercase;
+}
+.h2,
+h2 {
+  font-size: 2rem;
+}
+.h3,
+h3 {
+  font-size: 1.75rem;
+}
+.h4,
+h4 {
+  font-size: 1.5rem;
+}
+.h5,
+h5 {
+  font-size: 1.25rem;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+}
+.h6,
+h6 {
+  font-size: 1rem;
+}
+.title {
+  font-weight: 600;
+}
+.subheading {
+  font-weight: 400;
+}
+.giant {
+  font-size: 20vw;
+  font-weight: 400;
+  margin: 0;
+}
+.subgiant {
+  font-size: 8vh;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 5vh;
+}
+i {
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+  color: $pink;
+  font-size: 2em;
+  text-transform: lowercase;
+}
+.main-menu {
+  a {
+    font-size: 9vh;
+    color: $black;
+  }
+}
+
+.nano {
+  font-size: 10px;
+  font-weight: 400;
+}
+.micro {
+  font-size: 12px;
+  font-weight: 400;
+}
+.small {
+  font-size: 14px;
+  font-weight: 400;
+}
+.small-italic {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+}
+.regular {
+  font-size: 16px;
+  font-weight: 400;
+}
+.light-regular {
+  font-size: 16px;
+  font-weight: 100;
+}
+.large {
+  font-size: 24px;
+  font-weight: 400;
+}
+.large-light {
+  font-size: 24px;
+  font-weight: 100;
+}
+.title {
+  font-size:32px;
+  font-weight: 100;
+}
+.title-large {
+  font-size: 48px;
+  font-weight: 100;
+}
+.extra-large {
+  font-size: 64px;
+  font-weight: 100;
+}
+.huge-icon{
+  font-size: 9vw;
+}
+.weighting100{
+  font-weight: 100;
+}
+.weighting400{
+  font-weight: 400;
+}
+.weighting600{
+  font-weight: 600;
+}
+.weighting700{
+  font-weight: 700;
+}
+.side-bprders{
+  border-left: 2px solid #f2f2f2;
+  border-right: 2px solid #f2f2f2;
+}
+.alphabet{  
+  font-size: 4vw;
+  margin: 0;
+  padding: 0;
+}
+.italic{
+  font-style: italic;
+}

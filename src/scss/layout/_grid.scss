@@ -1,0 +1,430 @@
+//======================================================
+// Widths
+//======================================================
+.width10 {
+    width: 10%;
+}
+
+.width15 {
+    width: 15%;
+}
+
+.width20 {
+    width: 20%;
+}
+
+.width25 {
+    width: 25%;
+}
+
+.width30 {
+    width: 30%;
+}
+
+.width33 {
+    width: 33.3333%;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.width66 {
+    width: 66.6666%;
+}
+
+.width70 {
+    width: 70%;
+}
+
+.width75 {
+    width: 75%;
+}
+
+.width80 {
+    width: 80%;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.height100 {
+    height: 100vh;
+}
+
+//======================================================
+// Flex
+//======================================================
+.flex {
+    display: flex;
+}
+
+.flex-left{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-centre-right {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+.flex-centre-left {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.flex-centre-reverse {
+    display: flex;
+    align-items: center;
+    justify-items:center;
+    flex-direction: row-reverse;
+}
+
+
+.flex-col-3 {
+    display: flex;
+}
+
+.flex-centre-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.flex-centre-col-left {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+}
+
+//======================================================
+// Grids
+//======================================================
+.row {
+margin: 9em 6em 9em 3em;
+}
+
+.grid-col-3 {
+    display: grid;
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-col-3-item {
+    justify-items: center;
+    align-items: center;
+}
+
+.cssgrid-1col {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    justify-items: stretch;
+    align-items: start;
+}
+
+.cssgrid-1col-centre {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-1col-centre-baseline{
+    @extend .cssgrid-1col-centre;
+    justify-items: baseline;
+}
+
+.cssgrid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    justify-items: stretch;
+    align-items: start;
+}
+
+.cssgrid-2col-centre {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-start {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: start;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-centre-reverse {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-left-large {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 4rem;
+    grid-gap: 4rem;
+    align-items: start;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-left-large-centre {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 4rem;
+    grid-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-right-large {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 4rem;
+    grid-gap: 4rem;
+    align-items: stretch;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-right-large-centre {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 4rem;
+    grid-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-2col-left-large-centre {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 4rem;
+    grid-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+
+.cssgrid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: start;
+    justify-items: stretch;
+}
+
+
+.cssgrid-3col-centre {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-4col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: start;
+    justify-content: center;
+}
+
+.cssgrid-4col-centre {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.cssgrid-5col {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.cssgrid-5col-centre {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    grid-column-gap: 4rem;
+    align-items: center;
+    justify-items: stretch;
+}
+
+@media (max-width: 575px) {
+
+    .cssgrid-1col,
+    .cssgrid-2col,
+    .cssgrid-3col,
+    .cssgrid-4col,
+    .cssgrid-5col {
+        grid-template-columns: repeat(1fr);
+    }
+}
+
+.box {
+    // background: var(--mint-dark);
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: all 0.15s linear;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+// @media (max-width: 575px) {
+//   body {
+//     background: olive;
+//   }
+// }
+// @media (min-width: 576px) and (max-width: 767px) {
+//   body {
+//     background: tomato;
+//   }
+// }
+// @media (min-width: 768px) and (max-width: 991px) {
+//   body {
+//     background: coral;
+//   }
+// }
+// @media (min-width: 992px) and (max-width: 1199px) {
+//   body {
+//     background: aqua;
+//   }
+// }
+// @media (min-width: 1200px) {
+//   body {
+//     background: hotpink;
+//   }
+// }
+$phone-only:(max-width: 575px);
+$tablet-portrait-up:(min-width: 576px) and (max-width: 767px);
+$tablet-landscape-up:(min-width: 768px) and (max-width: 991px);
+$desktop-up:(min-width: 992px) and (max-width: 1199px);
+$desktop-large-up:(min-width: 1200px);
+
+@media ($phone-only) {
+    body {
+        background: olive;
+    }
+}
+
+@media ($tablet-portrait-up) {
+    body {
+        background: tomato;
+    }
+}
+
+@media ($tablet-landscape-up) {
+    body {
+        background: coral;
+    }
+}
+
+@media ($desktop-up) {
+    body {
+        background: aqua;
+    }
+}
+
+@media ($desktop-large-up) {
+    body {
+        background: hotpink;
+    }
+}
+
+// // Extra small devices (portrait phones, less than 576px)
+// @media (max-width: 575px) { ... }
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) and (max-width: 767px) { ... }
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) and (max-width: 991px) { ... }
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) and (max-width: 1199px) { ... }
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { ... }
+//======================================================
+// Tiles
+//======================================================
+.tile25,
+.tile33,
+.tile50,
+.tile100 {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-flow: column;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.tile0 {
+    height: 0vh;
+}
+
+.tile100 {
+    height: calc(100vh - 2rem);
+}
+
+.tile50 {
+    height: 50vh;
+    height: calc(50vh - 1rem);
+}
+
+.tile33 {
+    height: 33vh;
+    height: calc(33vh - 0.666rem);
+}
+
+.tile25 {
+    height: 25vh;
+    height: calc(25vh - 0.5rem);
+}
+
+.padding1 {
+    padding: 0 1rem;
+}
+
+.padding2 {
+    padding: 0 2rem;
+}
