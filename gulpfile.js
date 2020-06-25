@@ -1,4 +1,3 @@
-
 const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync').create();
 const cache = require('gulp-cache');
@@ -11,7 +10,7 @@ const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const { src, task, watch, series, parallel } = require('gulp');
+// const { src, task, watch, series, parallel } = require('gulp');
 const uglify = require('gulp-uglify');
 
 //=====================================================================
@@ -90,7 +89,7 @@ function clear () {
 
 // Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
 function clean() {
-    return del("./dist/*",);
+    return del('./dist/*',);
 }
 
 //=====================================================================
@@ -173,11 +172,11 @@ function watch() {
 exports.style = style;
 exports.js = js;
 exports.imageMin = imageMin;
-exports.copyFiles = parallel(copyFavicon, copyFonts, copyFonts);
+// exports.copyFiles = parallel(copyFavicon, copyFonts, copyFonts);
 exports.copyFavicon = copyFavicon;
 exports.copyFonts = copyFonts;
 exports.copyVideos = copyVideos;
-exports.watch = watch;
+ exports.watch = watch;
 
 // Gulp commands to be run in terminal
 exports.clear = clear;
@@ -196,3 +195,5 @@ exports.clean = clean;
 
 //   gulp.task('default', gulp.series (gulp.parallel(style, js, imageMin, copyFiles), watch, browserSync));
 //   gulp.task('default', gulp.series(clean, gulp.parallel(scripts, styles)));
+
+// gulp.task('default', gulp.parallel(style, imageMin), watch);
