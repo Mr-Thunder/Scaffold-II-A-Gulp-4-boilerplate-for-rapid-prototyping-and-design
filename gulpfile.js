@@ -10,13 +10,13 @@ const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-// const { src, task, watch, series, parallel } = require('gulp');
+const { parallel } = require('gulp');
 const uglify = require('gulp-uglify');
 
 //=====================================================================
 //Compile scss into css
 //=====================================================================
-function style(){
+function styleTask(){
     // 1. Locate scss files in src folder
     return gulp.src('./src/scss/**/*.scss')
     // 2. Initialise sourcemaps before compilation starts
@@ -54,6 +54,17 @@ function style(){
     // 8. Stream changes to all browsers
     .pipe(browserSync.stream());
 }
+
+//=====================================================================
+// concatonate and minify JS
+//=====================================================================
+
+function jsTask(){
+    return gulp.src(['./src/js/plugins/*.js', './src/js/*.js'])
+        .pipe(concat('global.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/js'));
+}
 //=====================================================================
 // Imagemin to compress imges and reduce filesize
 //=====================================================================
@@ -76,20 +87,6 @@ function imageMin() {
         ])))
         // Send optimised images to folder
         .pipe(gulp.dest('./dist/assets/images'))
-}
-
-//=====================================================================
-// Cleaning using terminal commands
-//=====================================================================
-
-//  Clear the image cache. Run 'gulp clear' in the terminal.
-function clear () {
-    return cache.clearAll();
-}
-
-// Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
-function clean() {
-    return del('./dist/*',);
 }
 
 //=====================================================================
@@ -122,16 +119,7 @@ function copyFavicon (done) {
     done();
 }
 
-//=====================================================================
-// concatonate and minify JS
-//=====================================================================
 
-function js(){
-    return gulp.src(['./src/js/plugins/*.js', './src/js/*.js'])
-        .pipe(concat('global.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./dist/js'));
-}
 
 //=====================================================================
 //Watch for changes to files
@@ -153,11 +141,11 @@ function watch() {
         }
     });
     // 1. When anything changes in scss files, run "style" function to compile scss and update browser css without refreshing page
-    gulp.watch('./src/scss/**/*.scss', style);
+    gulp.watch('./src/scss/**/*.scss', styleTask);
     // 2. When anything changes in the html files, update browser html and refresh page
     gulp.watch('./src/*.html').on('change', browserSync.reload);
     // 3. When anything changes in the js files, update browser js and refresh page
-    gulp.watch('./src/js/**/*.js').on('change', browserSync.reload);
+    gulp.watch('./src/js/**/*.js', jsTask).on('change', browserSync.reload);
     // 4. When a file is added to the images folder run imagemin to optimise the file
     gulp.watch('./src/assets/images/*', imageMin);
     // gulp.series(parallel(style, js, imageMin));
@@ -169,17 +157,34 @@ function watch() {
     // './src/assets/images/fonts/*', copyFiles);
 }
 
-exports.style = style;
-exports.js = js;
+//=====================================================================
+// Cleaning using terminal commands
+//=====================================================================
+
+//  Clear the image cache. Run 'gulp clear' in the terminal.
+function clearCache () {
+    return cache.clearAll();
+}
+
+// Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
+function clean() {
+    return del('./dist/*',);
+}
+
+exports.style = styleTask;
+exports.jsTask = jsTask;
+exports.watch = watch;
 exports.imageMin = imageMin;
-// exports.copyFiles = parallel(copyFavicon, copyFonts, copyFonts);
 exports.copyFavicon = copyFavicon;
 exports.copyFonts = copyFonts;
 exports.copyVideos = copyVideos;
- exports.watch = watch;
+
+// Gulp runs 3 file copying tasks parallel
+exports.copyFiles = parallel(copyFavicon, copyFonts, copyFonts);
+
 
 // Gulp commands to be run in terminal
-exports.clear = clear;
+exports.clearCache = clearCache;
 exports.clean = clean;
 
 // gulp.task('default', gulp.parallel())
