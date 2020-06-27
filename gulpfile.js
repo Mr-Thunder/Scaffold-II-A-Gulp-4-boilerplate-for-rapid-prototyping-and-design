@@ -47,7 +47,7 @@ function styleTask(){
             }),
         )]
     ))
-    // 6. Now add/write the sourcemaps 
+    // 6. Now add/write the sourcemaps
     .pipe(sourcemaps.write('.'))
     // 7. Save compilled css to dist folder
     .pipe(gulp.dest('./dist/css'))
@@ -93,13 +93,23 @@ function imageMin() {
 // Copy files that do not need to be compressed or altered
 //=====================================================================
 
+// Copy HTML files to dist folder
+function copyHTML (done) {
+    // Locate files
+    return gulp.src('./src/*html',)
+    // Copy the files to the dist folder
+    .pipe(gulp.dest('./dist'))
+    .pipe(notify('Gulp copied a HTML file'))
+    done();
+}
+
 // Copy video to dist folder
 function copyVideos (done) {
-    // Locate files 
+    // Locate files
     return gulp.src('./src/assets/video/*',)
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist/assets/video'))
-    .pipe(notify('Hello Gulp'))
+    .pipe(notify('Gulp copied a video'))
     done();
 }
 // Copy fonts to dist folder
@@ -118,8 +128,6 @@ function copyFavicon (done) {
     .pipe(gulp.dest('./dist/assets/images/favicon'))
     done();
 }
-
-
 
 //=====================================================================
 //Watch for changes to files
@@ -140,13 +148,13 @@ function watch() {
             forms: false
         }
     });
-    // 1. When anything changes in scss files, run "style" function to compile scss and update browser css without refreshing page
+    // When anything changes in scss files, run "style" function to compile scss and update browser css without refreshing page
     gulp.watch('./src/scss/**/*.scss', styleTask);
-    // 2. When anything changes in the html files, update browser html and refresh page
+    // When anything changes in the html files, update browser html and refresh page
     gulp.watch('./src/*.html').on('change', browserSync.reload);
-    // 3. When anything changes in the js files, update browser js and refresh page
+    // When anything changes in the js files, update browser js and refresh page
     gulp.watch('./src/js/**/*.js', jsTask).on('change', browserSync.reload);
-    // 4. When a file is added to the images folder run imagemin to optimise the file
+    // When a file is added to the images folder run imagemin to optimise the file
     gulp.watch('./src/assets/images/*', imageMin);
     // gulp.series(parallel(style, js, imageMin));
     // gulp.watch('./src/assets/video/*', copyFiles);
@@ -171,10 +179,15 @@ function clean() {
     return del('./dist/*',);
 }
 
+//=====================================================================
+// Export amd run tasks
+//=====================================================================
+
 exports.style = styleTask;
 exports.jsTask = jsTask;
 exports.watch = watch;
 exports.imageMin = imageMin;
+exports.copyHTML = copyHTML;
 exports.copyFavicon = copyFavicon;
 exports.copyFonts = copyFonts;
 exports.copyVideos = copyVideos;
