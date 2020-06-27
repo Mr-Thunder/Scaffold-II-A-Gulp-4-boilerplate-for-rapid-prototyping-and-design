@@ -1,6 +1,1 @@
-console.log("hello wddorld");
-
-window.addEventListener("load", function(){
-    const loader = document.querySelector(".loader");
-    loader.className += " hidden";
-});
+console.log("hello wdddorld"),window.addEventListener("load",function(){loader=document.querySelector(".loader"),loader.className+=" hidden"});
