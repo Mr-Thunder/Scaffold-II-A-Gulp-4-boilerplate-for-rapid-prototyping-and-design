@@ -1,18 +1,18 @@
-const autoprefixer = require('autoprefixer');
-const browserSync = require('browser-sync').create();
-const cache = require('gulp-cache');
-const concat = require('gulp-concat');
-const cssnano = require('cssnano');
-const del = require("del");
+const autoprefixer = require('autoprefixer'); // - Adds vendor prefixes to CSS
+const browserSync = require('browser-sync').create(); // - Live reload across browsers
+ // - File based caching
+const concat = require('gulp-concat'); // - Merges JS files
+const cssnano = require('cssnano'); // - Minifies CSS
+const del = require("del"); // - Allows deleting of files and folders
 const gulp = require('gulp');
-const htmlmin = require('gulp-htmlmin');
-const imagemin = require('gulp-imagemin');
-const notify = require('gulp-notify');
-const postcss = require('gulp-postcss');
-const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
+const htmlmin = require('gulp-htmlmin'); // - Minifies HTML
+const imagemin = require('gulp-imagemin'); // - Minifies images
+const notify = require('gulp-notify'); // - Notifys messages in the terminal
+const postcss = require('gulp-postcss'); // - Minifies images
+const sass = require('gulp-sass'); // - Transforms Sass into CSS
+const sourcemaps = require('gulp-sourcemaps'); // - Minifies images
 const { src, series, parallel, dest, } = require('gulp');
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify'); // - Mminifies JS
 
 //=====================================================================
 //Compile scss into css
@@ -50,7 +50,7 @@ function cssTask(){
     ))
     // 6. Now add/write the sourcemaps
     .pipe(sourcemaps.write('.'))
-    // 7. Save compilled css to dist folder
+    // 7. Save compiled css to dist folder
     .pipe(gulp.dest('./dist/css'))
     // 8. Stream changes to all browsers
     .pipe(browserSync.stream());
@@ -59,102 +59,82 @@ function cssTask(){
 //=====================================================================
 // concatonate and minify JS
 //=====================================================================
-
 function jsTask(){
-    return gulp.src(['/src/js/**/*.js'])
-        // 2. Initialise sourcemaps before compilation starts
+    // Locate js files in js folder
+    return gulp.src(['./src/js/**/*.js'])
+        // Initialise sourcemaps before compilation starts
         .pipe( sourcemaps.init())
+        // Concatante/combine all js files
         .pipe(concat('all.js'))
+        // Minify combined js files
         .pipe(uglify())
-        // 6. Now add/write the sourcemaps
+        // Add/write the sourcemaps
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dist/js'));
+        // Save compiled js to dist folder
+        .pipe(gulp.dest('./dist/js'))
+         // Notify the files copied in the terminal
+        .pipe(notify('Minified <%= file.relative %> to <%= file.path %>' ))
 }
-//=====================================================================
-// Imagemin to compress imges and reduce filesize
-//=====================================================================
-
-function imageMin() {
-    // Locate unprocessed images
-    // return gulp.src('./src/assets/images/*.{gif,png,jpg,svg}')
-    //     // Optimise images and reduce file size,
-    //     // use gulp-cache to remember which files have been optimised to avoid replecation of task.
-    //     .pipe(cache(imagemin([
-    //         imagemin.gifsicle({interlaced: true}),
-    //         imagemin.mozjpeg({quality: 75, progressive: true}),
-    //         imagemin.optipng({optimizationLevel: 5}),
-    //         imagemin.svgo({
-    //             plugins: [
-    //                 {removeViewBox: true},
-    //                 {cleanupIDs: false}
-    //             ]
-    //         })
-    //     ])))
-    //     // Send optimised images to folder
-    //     .pipe(gulp.dest('./dist/assets/images'))
-    gulp.src('./src/assets/images/*')
-    .pipe(imagemin([
-        imagemin.svgo({
-            plugins: [
-                {
-                    removeViewBox: true
-                }
-            ]
-        })
-    ], {
-        verbose: false
-    }))
-		.pipe(gulp.dest('./dist/assets/images'))
-}
-
 //=====================================================================
 // Copy files that do not need to be compressed or altered
 //=====================================================================
-
-// // Copy HTML files to dist folder
-// function copyHTML (done) {
-//     // Locate files
-//     return gulp.src('./src/*html',)
-//     // Copy the files to the dist folder
-//     .pipe(gulp.dest('./dist'))
-//     // Notify the files copied in the terminal
-//     .pipe(notify('Copied <%= file.relative %>')),
-//     done();
-// }
-
 function htmlTask (done) {
     // Locate files
     return gulp.src('./src/**/*html',)
-    // Copy the files to the dist folder
+    // Minify HTML
     .pipe(htmlmin(
         {
             collapseWhitespace: true
         }
     ))
+    // Copy the files to the dist folder
     .pipe(gulp.dest('./dist'))
     // Notify the files copied in the terminal
      .pipe(notify('Minified <%= file.relative %> to <%= file.path %>')),
      done();
 }
+//=====================================================================
+// Imagemin to compress imges and reduce filesize
+//=====================================================================
+function imageMin() {
+     // Locate unprocessed images
+    gulp.src('./src/assets/images/*')
+     // Optimise images and reduce file size, use gulp-cache to remember which files have been optimised to avoid replecation of task.
+    .pipe(imagemin([
+        imagemin.svgo({
+            plugins: [
+                {removeViewBox: true},
+                {cleanupIDs: false}
+            ]
+        })
+    ], {
+        verbose: false
+    }))
+    // Send optimised images to folder
+		.pipe(gulp.dest('./dist/assets/images'))
+}
+//=====================================================================
+// Copy files that do not need to be compressed or altered
+//=====================================================================
 
 // Copy video to dist folder
 function copyVideo (done) {
     // Locate files
     return gulp.src('./src/assets/video/*',)
     // Copy the files to the dist folder
-    .pipe(cache(gulp.dest('./dist/assets/video')))
+    .pipe(gulp.dest('./dist/assets/video'))
      // Notify the files copied in the terminal
      .pipe(notify('Copied <%= file.relative %> to <%= file.path %>')),
      done();
 }
 // Copy fonts to dist folder
 function copyFonts (done) {
-    // Locate files 
+    // Locate files
     return gulp.src('./src/assets/fonts/**/*')
     // Copy the files to the dist folder
-    .pipe(cache(gulp.dest('./dist/assets/fonts')))
+    .pipe(gulp.dest('./dist/assets/fonts'))
      // Notify the files copied in the terminal
-     .pipe(notify('Copied <%= file.relative %> to fonts folder')),
+     .pipe(notify('Copied <%= file.relative %> to <%= file.path %>')),
      done();
 }
 // Copy Favicon to dist folder
@@ -191,14 +171,11 @@ function watchTask() {
     // When anything changes in scss files, run "style" function to compile scss and update browser css without refreshing page
     gulp.watch('./src/scss/**/*.scss', cssTask);
     // When anything changes in the html files, update browser html and refresh page
-    gulp.watch('./src/*.html').on('change', browserSync.reload);
+    gulp.watch('./src/*.html', htmlTask).on('change', browserSync.reload);
     // When anything changes in the js files, update browser js and refresh page
     gulp.watch('./src/js/**/*.js', jsTask).on('change', browserSync.reload);
     // When a file is added to the images folder run imagemin to optimise the file
-    gulp.watch('./src/assets/images/*', imageMin);
-    // gulp.series(parallel(style, js, imageMin));
-    // gulp.watch('./src/assets/video/*', copyFiles);
-
+    // gulp.watch('./src/assets/images/*', imageMin);
     gulp.watch('./src/assets/video/*', copyVideo);
     gulp.watch('./src/assets/images/favicon/*', copyFavicon);
     gulp.watch('./src/assets/images/fonts/**/*', copyFonts);
@@ -228,43 +205,23 @@ exports.copyVideo = copyVideo;
 exports.jsTask = jsTask;
 exports.watchTask = watchTask;
 exports.imageMin = imageMin;
-// exports.copyHTML = copyHTML;
 exports.htmlTask = htmlTask;
 exports.copyFavicon = copyFavicon;
 exports.copyFonts = copyFonts;
 // exports.browserSync = browserSync;
 
-// Gulp runs 3 file copying tasks parallel
-// exports.copyFiles = parallel(copyFavicon, copyFonts, copyFonts);
-
-
 // Gulp commands to be run in terminal
 exports.clearCache = clearCache;
 exports.clean = clean;
 
-// gulp.task('default', gulp.parallel())
+//=====================================================================
+// Run Gulp
+//=====================================================================
 // gulp.task('default', gulp.series(watch, browserSync));
 
  //this will first trigger sass() and js() functions parallel, then after executing these two, browser_sync will run
  exports.default = series(
-     parallel(cssTask, jsTask, imageMin, copyFavicon, copyFonts, copyVideo),
+     parallel(cssTask, jsTask, htmlTask,  copyFavicon, copyFonts, copyVideo),
      watchTask
 );
 
-// gulp.task('default', function(done) {
-//     gulp.series('watch')(
-//         parallel('cssTask', 'jsTask', 'imageMin', 'copyFavicon', 'copyHTML', 'copyFonts', 'copyVideos')
-//         );
-//     done();
-// })
-
-
-// exports.default = series(parallel(style, js, imageMin), watch);
-// gulp.task('default', gulp.parallel(style, js, imageMin, copyFiles), watch);
-
-//   gulp.task('copyFiles',gulp.parallel(copyFavicon,copyFonts, copyFonts));
-
-//   gulp.task('default', gulp.series (gulp.parallel(style, js, imageMin, copyFiles), watch, browserSync));
-//   gulp.task('default', gulp.series(clean, gulp.parallel(scripts, styles)));
-
-// gulp.task('default', gulp.parallel(style, imageMin), watch);
