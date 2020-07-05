@@ -67,7 +67,14 @@ function jsTask(){
         // Concatante/combine all js files
         .pipe(concat('all.js'))
         // Minify combined js files
-        .pipe(uglify())
+        .pipe(uglify(
+            {
+                // Change if you do not which to compress
+                mangle: true,
+                compress: true,
+                output: { beautify: false }
+            }
+        ))
         // Add/write the sourcemaps
         .pipe(sourcemaps.write('.'))
         // Save compiled js to dist folder
