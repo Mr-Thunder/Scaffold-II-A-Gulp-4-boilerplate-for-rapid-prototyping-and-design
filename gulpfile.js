@@ -7,6 +7,7 @@ const del = require("del"); // - Allows deleting of files and folders
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin'); // - Minifies HTML
 const imagemin = require('gulp-imagemin'); // - Minifies images
+const modernizr = require('gulp-modernizr'); //  detects features in browser.
 const notify = require('gulp-notify'); // - Notifys messages in the terminal
 const postcss = require('gulp-postcss'); // - Minifies images
 const sass = require('gulp-sass'); // - Transforms Sass into CSS
@@ -123,6 +124,37 @@ function imageMin(done) {
     done();
 }
 //=====================================================================
+// Modernizr detects the features available in a user's browser.
+//=====================================================================
+
+function modernizrTask () {
+    return gulp.src('./src/js/**/*.js')
+      .pipe(modernizr(
+        {
+            'options': [
+                'setClasses',
+                "html5printshiv"
+            ],
+            'tests': [
+                'touchevents',
+                'backgroundcliptext',
+                'cssfilters',
+                'objectfit',
+                'videoautoplay',
+                'cssgrid',
+                'cssgridlegacy',
+                'cssmask',
+                'smil',
+                'svgclippaths'
+            ],
+            excludeTests: ['csstransforms3d']
+          }
+      ))
+        // Copy the files to the src js plugins folder to added to the jsTask
+      .pipe(gulp.dest('./src/js/plugins'))
+  };
+
+//=====================================================================
 // Copy files that do not need to be compressed or altered
 //=====================================================================
 
@@ -212,15 +244,15 @@ function clearCache () {
 // Export tasks as private functions
 //=====================================================================
 
-exports.cssTask = cssTask;
-exports.copyVideo = copyVideo;
-exports.jsTask = jsTask;
-exports.watchTask = watchTask;
-exports.imageMin = imageMin;
-exports.htmlTask = htmlTask;
 exports.copyFavicon = copyFavicon;
 exports.copyFonts = copyFonts;
-
+exports.copyVideo = copyVideo;
+exports.cssTask = cssTask;
+exports.htmlTask = htmlTask;
+exports.imageMin = imageMin;
+exports.jsTask = jsTask;
+exports.modernizrTask = modernizrTask;
+exports.watchTask = watchTask;
 
 // Gulp commands to be run in terminal
 exports.clean = clean;
@@ -230,8 +262,8 @@ exports.clearCache = clearCache;
 // Run Gulp
 //=====================================================================
 
- //this will first trigger sass() and js() functions parallel, then after executing these two, browser_sync will run
  exports.default = series(
+     modernizrTask,
      parallel(imageMin, cssTask, jsTask, htmlTask, copyFavicon, copyFonts, copyVideo),
      watchTask
 );
