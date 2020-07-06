@@ -1,6 +1,6 @@
 const autoprefixer = require('autoprefixer'); // - Adds vendor prefixes to CSS
-const browserSync = require('browser-sync').create(); // - Live reload across browsers
- // - File based caching
+const browserSync = require('browser-sync').create(); // - Live reload across 
+const cache = require('gulp-cache');// - File based caching
 const concat = require('gulp-concat'); // - Merges JS files
 const cssnano = require('cssnano'); // - Minifies CSS
 const del = require("del"); // - Allows deleting of files and folders
@@ -10,7 +10,7 @@ const imagemin = require('gulp-imagemin'); // - Minifies images
 const notify = require('gulp-notify'); // - Notifys messages in the terminal
 const postcss = require('gulp-postcss'); // - Minifies images
 const sass = require('gulp-sass'); // - Transforms Sass into CSS
-const sourcemaps = require('gulp-sourcemaps'); // - Minifies images
+const sourcemaps = require('gulp-sourcemaps'); // - Creates sourcemaps
 const { src, series, parallel, dest, } = require('gulp');
 const uglify = require('gulp-uglify'); // - Mminifies JS
 
@@ -63,7 +63,7 @@ function jsTask(){
     // Locate js files in js folder
     return gulp.src(['./src/js/**/*.js'])
         // Initialise sourcemaps before compilation starts
-        .pipe( sourcemaps.init())
+        .pipe(sourcemaps.init())
         // Concatante/combine all js files
         .pipe(concat('all.js'))
         // Minify combined js files
@@ -107,19 +107,17 @@ function htmlTask (done) {
 function imageMin(done) {
      // Locate unprocessed images
     gulp.src('./src/assets/images/*')
-     // Optimise images and reduce file size,
-    .pipe(imagemin([
-        imagemin.gifsicle({interlaced: true, optimizationLevel: 3}), // 1 to 
-        imagemin.mozjpeg({quality: 90}),
+     // Optimise images and reduce file size, use gulp-cache to stop repeating
+    .pipe(cache(imagemin([
+        imagemin.gifsicle({interlaced: true, optimizationLevel: 3}), // 1 to 3
+        imagemin.mozjpeg({quality: 90, progressive: true}),
         imagemin.optipng({optimizationLevel: 5}), // 0 to 7
         imagemin.svgo({
-            plugins: [
-                {cleanupIDs: false}
-            ]
-        })
+            plugins: [{cleanupIDs: false}]
+            })
         ],
         {verbose: true }
-    ))
+    )))
     // Send optimised images to folder
     .pipe(gulp.dest('./dist/assets/images')),
     done();
@@ -202,7 +200,12 @@ function watchTask() {
 // Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
 function clean() {
     // Del allows deletetion of files and folders using globs
-    return del('./dist/*',);
+    return del('./dist/*')
+}
+
+//  Clear the image cache. Run 'gulp clear' in the terminal.
+function clearCache () {
+    return cache.clearAll();
 }
 
 //=====================================================================
@@ -221,6 +224,7 @@ exports.copyFonts = copyFonts;
 
 // Gulp commands to be run in terminal
 exports.clean = clean;
+exports.clearCache = clearCache;
 
 //=====================================================================
 // Run Gulp
@@ -228,7 +232,7 @@ exports.clean = clean;
 
  //this will first trigger sass() and js() functions parallel, then after executing these two, browser_sync will run
  exports.default = series(
-     parallel(cssTask, jsTask, htmlTask, imageMin, copyFavicon, copyFonts, copyVideo),
+     parallel(imageMin, cssTask, jsTask, htmlTask, copyFavicon, copyFonts, copyVideo),
      watchTask
 );
 
