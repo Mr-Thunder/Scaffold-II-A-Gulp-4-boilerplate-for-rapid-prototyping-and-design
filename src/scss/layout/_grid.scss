@@ -112,12 +112,12 @@
 // Grids
 //======================================================
 .row {
-margin: 9em 6em 9em 3em;
+margin: 1em 1em 1em 1em;
 }
 
 .grid-col-3 {
     display: grid;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -132,7 +132,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-1col {
     display: grid;
     grid-template-columns: repeat(1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     justify-items: stretch;
     align-items: start;
@@ -141,7 +141,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-1col-centre {
     display: grid;
     grid-template-columns: repeat(1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;
@@ -155,7 +155,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-2col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     justify-items: stretch;
     align-items: start;
@@ -164,7 +164,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-2col-centre {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;
@@ -173,7 +173,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-2col-start {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: start;
     justify-items: stretch;
@@ -182,7 +182,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-2col-centre-reverse {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;
@@ -192,7 +192,7 @@ margin: 9em 6em 9em 3em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 4rem;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     align-items: start;
     justify-items: stretch;
 }
@@ -201,7 +201,7 @@ margin: 9em 6em 9em 3em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 4rem;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     align-items: center;
     justify-items: stretch;
 }
@@ -210,7 +210,7 @@ margin: 9em 6em 9em 3em;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: 4rem;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     align-items: stretch;
     justify-items: stretch;
 }
@@ -219,7 +219,7 @@ margin: 9em 6em 9em 3em;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: 4rem;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     align-items: center;
     justify-items: stretch;
 }
@@ -228,7 +228,7 @@ margin: 9em 6em 9em 3em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 4rem;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     align-items: center;
     justify-items: stretch;
 }
@@ -237,7 +237,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-3col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: start;
     justify-items: stretch;
@@ -247,7 +247,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-3col-centre {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;
@@ -256,7 +256,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-4col {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: start;
     justify-content: center;
@@ -265,7 +265,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-4col-centre {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;
@@ -274,7 +274,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-5col {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-content: center;
@@ -283,7 +283,7 @@ margin: 9em 6em 9em 3em;
 .cssgrid-5col-centre {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     grid-column-gap: 4rem;
     align-items: center;
     justify-items: stretch;

@@ -46,15 +46,31 @@ body {
   font-family: $futura-pt;
   font-family:$freight-big-pro;
   font-weight: 100;
-  color: mistyrose;  
-  // background: $white;
-  background:$pink;
-  font-size: 14px;
-  margin: 0; 
+  background:var(--black);
+  color: mistyrose;
+  font-size: 16px;
+  margin: 0;
+}
+
+h1, h3{
+  font-weight: 100;
+  color: hotpink;
+  text-transform: uppercase;
+}
+.wrapper{
+  width: 100%;
+  max-width: 1296px;
+  // border:  4px  inset salmon;
+  margin: 4em auto;
+}
+
+svg{
+  width: 25%;
+  height: auto;
 }
 
 .size-auto {
-  width: 50%;
+  width: 100%;
   height: auto;
 }
 
@@ -70,8 +86,17 @@ body {
   cursor: pointer;
 }
 
+.align-centre{
+  text-align: center;
+}
 .relative {
   position: relative;
+}
+
+.break-word{
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .video-responsive {
@@ -80,3 +105,12 @@ body {
   object-fit: contain;
 }
 
+a {
+  text-decoration: none;
+  color: aqua;
+  outline: none;
+}
+
+p{
+  font-family: $futura-pt;
+}
