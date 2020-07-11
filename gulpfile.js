@@ -60,9 +60,9 @@ function cssTask(){
 //=====================================================================
 // Concatonate and minify JS
 //=====================================================================
-function jsTask(){
-    // Locate js files in js folder
-    return gulp.src(['./src/js/**/*.js'])
+function jsTask(){ 
+    // Locate js files in js folder and add Jquery
+    return gulp.src(['./src/js/**/*.js','./node_modules/jquery/dist/jquery.js'])
         // Initialise sourcemaps before compilation starts
         .pipe(sourcemaps.init())
         // Concatante/combine all js files
