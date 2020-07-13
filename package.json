@@ -28,7 +28,8 @@
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "node-normalize-scss": "^8.1.2"
   },
   "keywords": [
     "gulp",
