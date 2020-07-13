@@ -1,5 +1,5 @@
 const autoprefixer = require('autoprefixer'); // - Adds vendor prefixes to CSS
-const browserSync = require('browser-sync').create(); // - Live reload across 
+const browserSync = require('browser-sync').create(); // - Browser reload  
 const cache = require('gulp-cache');// - File based caching
 const concat = require('gulp-concat'); // - Merges JS files
 const cssnano = require('cssnano'); // - Minifies CSS
@@ -11,6 +11,7 @@ const modernizr = require('gulp-modernizr'); //  detects features in browser.
 const notify = require('gulp-notify'); // - Notifys messages in the terminal
 const path = require('path'); // - Gets Path for gulp-notify
 const postcss = require('gulp-postcss'); // -
+const rename = require('gulp-rename');   // Adds .min to filename
 const sass = require('gulp-sass'); // - Transforms Sass into CSS
 const sourcemaps = require('gulp-sourcemaps'); // - Creates sourcemaps
 const { src, series, parallel, dest, } = require('gulp');
@@ -44,7 +45,7 @@ function cssTask(){
         cssnano( ({
             preset: [
                 'default', {
-                      // Change if you do not which to minify
+                    // Change if you do not which to minify
                     normalizeWhitespace: true,
                     discardComments: true,
                 }],
@@ -53,7 +54,12 @@ function cssTask(){
     ))
     // Now add/write the sourcemaps
     .pipe(sourcemaps.write('.'))
-    // Save compiled css to dist folder
+   
+     // Add .min to filename
+    .pipe(rename({
+        extname: '.min.css'
+    }))
+     // Save compiled css to dist folder
     .pipe(gulp.dest('./dist/css'))
     // Stream changes to all browsers
     .pipe(browserSync.stream());
@@ -80,10 +86,12 @@ function jsTask(){
         ))
         // Add/write the sourcemaps
         .pipe(sourcemaps.write('.'))
+        // Rename to add .min to filename
+        .pipe(rename({
+            extname: '.min.js'
+        }))
         // Save compiled js to dist folder
         .pipe(gulp.dest('./dist/js'))
-         // Notify the files copied in the terminal
-        .pipe(notify('Minified <%= file.relative %> to <%= file.path %>' ))
 }
 //=====================================================================
 // Copy and minify HTML
@@ -123,7 +131,8 @@ function imageMin(done) {
             plugins: [{cleanupIDs: false}]
             })
         ],
-        {verbose: true }
+        // Shows files optimastion results in the terminal
+        {verbose: true } 
     )))
     // Send optimised images to folder
     .pipe(gulp.dest('./dist/assets/images')),
@@ -141,6 +150,7 @@ function modernizrTask () {
                 'setClasses',
                 "html5printshiv"
             ],
+            // Add browser tests
             'tests': [
                 'touchevents',
                 'backgroundcliptext',
@@ -178,6 +188,7 @@ function copyVideo (done) {
       })),
     done();
 }
+
 // Copy fonts to dist folder
 function copyFonts (done) {
     // Locate files
@@ -192,6 +203,7 @@ function copyFonts (done) {
       })),
     done();
 }
+
 // Copy Favicon to dist folder
 function copyFavicon (done) {
     // Locate files that do not need to be compressed or altered
@@ -220,6 +232,7 @@ function watchTask() {
         logConnections: true,
         logPrefix: "Scaffold II",
         notify: true,
+        // Syncs across multiple browsers
         ghostMode: {
             scroll: true,
             links: true,
@@ -251,7 +264,6 @@ function watchTask() {
 function clean() {
     // Del allows deletetion of files and folders using globs
     return del('./dist/*');
-
 }
 
 //  Clear the image cache. Run 'gulp clear' in the terminal.
