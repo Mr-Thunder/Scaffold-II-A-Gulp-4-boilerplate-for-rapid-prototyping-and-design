@@ -11,6 +11,7 @@ const modernizr = require('gulp-modernizr'); //  detects features in browser.
 const notify = require('gulp-notify'); // - Notifys messages in the terminal
 const path = require('path'); // - Gets Path for gulp-notify
 const postcss = require('gulp-postcss'); // -
+const postcssPresetEnv = require('postcss-preset-env');
 const rename = require('gulp-rename');   // Adds .min to filename
 const sass = require('gulp-sass'); // - Transforms Sass into CSS
 const sourcemaps = require('gulp-sourcemaps'); // - Creates sourcemaps
@@ -30,9 +31,13 @@ function cssTask(){
     .pipe(sass( {includePaths: ['node_modules']}))
     // Log sass errors in the terminal
     .on('error', sass.logError)
-    // Autoprefix css for selected browsers and minify
-    .pipe(postcss(
-        [autoprefixer(
+    // Pipe CSS through plugins using PostCSS
+    .pipe(postcss([
+        postcssPresetEnv({ 
+            stage: 0
+        }),
+         // Autoprefix CSS
+        autoprefixer(
             'last 4 versions',
             'firefox >= 4',
             'safari 7',
@@ -42,6 +47,7 @@ function cssTask(){
             'IE 10',
             'IE 11'
             ),
+        // Minify CSS
         cssnano( ({
             preset: [
                 'default', {
@@ -52,13 +58,12 @@ function cssTask(){
             }),
         )]
     ))
-    // Now add/write the sourcemaps
-    .pipe(sourcemaps.write('.'))
-   
      // Add .min to filename
     .pipe(rename({
         extname: '.min.css'
     }))
+      // Now add/write the sourcemaps
+    .pipe(sourcemaps.write('.'))
      // Save compiled css to dist folder
     .pipe(gulp.dest('./dist/css'))
     // Stream changes to all browsers
@@ -183,7 +188,7 @@ function copyVideo (done) {
      // Notify the files copied in the terminal
     .pipe(notify(file => {
         var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id); // Also available as `module.path`
+        var projectFolder = path.dirname(module.id);
         return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
       })),
     done();
@@ -198,7 +203,7 @@ function copyFonts (done) {
      // Notify the files copied in the terminal
     .pipe(notify(file => {
         var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id); // Also available as `module.path`
+        var projectFolder = path.dirname(module.id);
         return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
       })),
     done();
@@ -213,7 +218,7 @@ function copyFavicon (done) {
     // Notify the files copied in the terminal
     .pipe(notify(file => {
         var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id); // Also available as `module.path`
+        var projectFolder = path.dirname(module.id);
         return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
       })),
     done();
@@ -260,15 +265,17 @@ function watchTask() {
 // Cleaning using terminal commands
 //=====================================================================
 
-// Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
-function clean() {
-    // Del allows deletetion of files and folders using globs
-    return del('./dist/*');
-}
-
-//  Clear the image cache. Run 'gulp clear' in the terminal.
+//  Clear the image cache. Run 'gulp clearCache' in the terminal.
 function clearCache () {
     return cache.clearAll();
+}
+
+// Clean assets by deleting dist folders Run 'gulp clean' in the terminal.
+function clean(){
+    //  Clear the cache
+    clearCache();
+      // Delete dist
+    return del('./dist/*')
 }
 
 //=====================================================================
