@@ -1,5 +1,6 @@
-# Scaffold-II-The-Rapid-Design-Boilerplate-with-Gulp-4
-A Gulp 4 boilerplate for rapid prototyping and design
+# Scaffold II - A Gulp 4 boilerplate for rapid prototyping and design
+
+Scaffold II is a design focused gulp boilerplate that automates tasks to speed up workflow. It comes with SCSS, HTML and JS compilation and minification. It allows for experimental CSS with PostCSS Preset Env and follows and the recommended SASS 7-1 file architecture. The boilerplate has plugins for image optimisation, live reload across multiple devices and built in support for the for the latest jQuery, normalize.css and customisable modernizr.js scripts, to get your project up and running straight away.
 
 ![Sacffold II](http://mrthunder.com/app/assets/images/scaffold-II.png)
 
@@ -25,7 +26,16 @@ A Gulp 4 boilerplate for rapid prototyping and design
 - [gulp-concat](https://www.npmjs.com/package/gulp-concat) Merges JS files.
 - [PostCSS-Preset-Env](https://preset-env.cssdb.org/) Use tomorrow’s CSS today
 
-## Installation
+## Installation and Prerequisites
+
+### [Node.js](https://nodejs.org) above 12.0.x.
+
+
+### [Gulp](http://gulpjs.com) above 4.0.x.
+
+```
+$ npm install --global gulp-cli
+```
 
 Install dependencies:
 
@@ -33,67 +43,84 @@ Install dependencies:
 npm install
 ```
 
-Compile the code for development and start a local server:
+## Tasks
+
+Compile the code for development, start local server, watch files for changes  and automatically Refresh Across Devices:
 
 ```
 gulp
 ```
 
+Delete files in dist folder
+
+```
+gulp clean
+```
+
+Clear the cache
+
+```
+gulp clearCache
+```
+
+
 ## Structure
 
 ```
-|--dist/                       # →  Static version of the website ready to upload (never edit)
+|--dist/                              # →  Static version of the website ready to upload (never edit)
 |
-|--gulpfile.js/                # →  Gulpfile config and tasks
-|--node_modules/               # →  Node.js packages (never edit)
-|--src/                        # →  Source files
-|  |--assets/                  # →  Assets
-|  |  |--fonts/                # →  Assets: Fonts
-|  |  |--img/                  # →  Assets: Images
-|  |  |  |--favicon/           # →  Assets: Favicons
-|  |  |--videos/               # →  Assets: Video
-|  |--js/                      # →  JS
-|  |  |--plugins/              # →  JS: Components
-|  |  |--app.js                # →  JS: Main file
-|  |--scss/                    # →  Styles: SASS 7-1 Architecture
+|--gulpfile.js/                       # →  Gulpfile config and tasks
+|--node_modules/                      # →  Node.js packages (never edit)
+|--src/                               # →  Source files
+|  |--assets/                         # →  Assets
+|  |  |--fonts/                       # →  Assets: Fonts
+|  |  |--img/                         # →  Assets: Images
+|  |  |  |--favicon/                  # →  Assets: Favicons
+|  |  |--videos/                      # →  Assets: Video
+|  |--js/                             # →  JS
+|  |  |--plugins/                     # →  JS: Plugins
+|  |  |  |--modernizr.js              # →  Plugins: Modernizr file 
+|  |  |--global.js                    # →  JS: Main file
+|  |--scss/                           # →  Styles: SASS 7-1 Architecture
 |  |  |--abstracts/
-|  |  |  |--_variables.scss    # →  Sass Variables
-|  |  |  |--_functions.scss    # →  Sass Functions
-|  |  |  |--_mixins.scss       # →  Sass Mixins
-|  |  |  |--_placeholders.scss # →  Sass Placeholders
+|  |  |  |--_variables.scss           # →  Abstracts: Sass Variables
+|  |  |  |--_functions.scss           # →  Abstracts: Sass Functions
+|  |  |  |--_mixins.scss              # →  Abstracts: Sass Mixins
+|  |  |  |--_placeholders.scss        # →  Abstracts: Sass Placeholders
 |  |  |--base/
-|  |  |  |--_reset.scss        # →  Reset - normalize.css
-|  |  |  |--_typography.scss   # →  Typography rules
+|  |  |  |--_reset.scss               # →  Base: Reset - normalize.css
+|  |  |  |--_typography.scss          # →  Base: Typography rules
 |  |  |--components/
-|  |  |  |--_buttons.scss      # →  Buttons
-|  |  |  |--_carousel.scss     # →  Carousel
-|  |  |  |--_cover.scss        # →  Cover
-|  |  |  |--_dropdown.scss     # →  Dropdown
-|  |  |  |--_loading-animation.scss     # →  Animated Loader
+|  |  |  |--_buttons.scss             # →  Components: Buttons
+|  |  |  |--_carousel.scss            # →  Components: Carousel
+|  |  |  |--_cover.scss               # →  Components: Cover
+|  |  |  |--_dropdown.scss            # →  Components: Dropdown
+|  |  |  |--_loading-animation.scss   # →  Components: Animated Loader
 |  |  |--layout/
-|  |  |  |--_navigation.scss   # →  Navigation
-|  |  |  |--_grid.scss         # →  Grid system
-|  |  |  |--_header.scss       # →  Header
-|  |  |  |--_footer.scss       # →  Footer
-|  |  |  |--_sidebar.scss      # →  Sidebar
-|  |  |  |--_forms.scss        # →  Forms
+|  |  |  |--_navigation.scss          # →  Layout: Navigation
+|  |  |  |--_grid.scss                # →  Layout: Grid system
+|  |  |  |--_header.scss              # →  Layout: Header
+|  |  |  |--_footer.scss              # →  Layout: Footer
+|  |  |  |--_sidebar.scss             # →  Layout: Sidebar
+|  |  |  |--_forms.scss               # →  Layout: Forms
 |  |  |--pages/
-|  |  |  |--_about.scss        # →  About specific styles
-|  |  |  |--_contact.scss      # →  Contact specific styles
-|  |  |  |--_home.scss         # →  Home specific styles
+|  |  |  |--_about.scss               # →  Pages: About specific styles
+|  |  |  |--_contact.scss             # →  Pages: Contact specific styles
+|  |  |  |--_home.scss                # →  Pages: Home specific styles
 |  |  |--themes/
-|  |  |  |--_theme.scss        # →  Default theme
-|  |  |  |--_admin.scss        # →  Admin theme
+|  |  |  |--_theme.scss               # →  Themes: Default theme
+|  |  |  |--_admin.scss               # →  Themes: Admin theme
 |  |  |--vendors/
-|  |  |  |--_bootstrap.scss    # →  Bootstrap
-|  |  |  |--_jquery-ui.scss    # →  jQuery UI
-|  |  |--main.scss             # →  Main Sass file
-|  |--pages/                   # →  Pages HTML
-|  |  |--about.html            # →  Templates: Layouts
-|--.gitignore                  # →  Gitignore
-|--package-lock.json           # →  NPM lock file (never edit)
-|--package.json                # →  Node.js dependencies and scripts
+|  |  |  |--_bootstrap.scss           # →  Vendors: Bootstrap
+|  |  |  |--_jquery-ui.scss           # →  Vendors: jQuery UI
+|  |  |--main.scss                    # →  SCSS: Main Sass file
+|  |--pages/                          # →  Pages 
+|  |  |--about.html                   # →  Pages: HTML
+|--.gitignore                         # →  Gitignore
+|--package-lock.json                  # →  NPM lock file (never edit)
+|--package.json                       # →  Node.js dependencies and scripts
 ```
+
 
 ## Credits
 
