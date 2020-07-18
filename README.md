@@ -121,7 +121,6 @@ gulp clearCache
 |--package.json                       # →  Node.js dependencies and scripts
 ```
 
-
 ## Credits
 
 - Images from Unsplash.com
@@ -132,4 +131,3 @@ gulp clearCache
 
 Made with :zap: by [MrThunder](http://www.mrthunder.com)
 
-[PostCSS Preset Env](href="https://preset-env.cssdb.org/") Use tomorrow’s CSS today
