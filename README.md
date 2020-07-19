@@ -1,6 +1,6 @@
 # Scaffold II - A Gulp 4 boilerplate for rapid prototyping and design
 
-Scaffold II is a design focused gulp boilerplate that automates tasks to speed up workflow. It comes with SCSS, HTML and JS compilation and minification. It allows for experimental CSS with PostCSS Preset Env and follows and the recommended SASS 7-1 file architecture. The boilerplate has plugins for image optimisation, live reload across multiple devices and built in support for the for the latest jQuery, normalize.css and customisable modernizr.js scripts, to get your project up and running straight away.
+Scaffold II is a design focused gulp boilerplate that automates tasks to speed up workflow, such as SCSS, HTML and JS compilation and minification. It allows for experimental CSS with PostCSS Preset Env and follows and the recommended SASS 7-1 file architecture. Image optimisation, live reload across multiple devices and the latest jQuery, normalize.css and customisable modernizr are also included.
 
 ![Sacffold II](http://mrthunder.com/app/assets/images/scaffold-II.png)
 
@@ -28,6 +28,8 @@ Scaffold II is a design focused gulp boilerplate that automates tasks to speed u
 
 ## Installation and Prerequisites
 
+Node and gulp must be installed.
+
 ### [Node.js](https://nodejs.org) above 12.0.x.
 
 
@@ -37,7 +39,7 @@ Scaffold II is a design focused gulp boilerplate that automates tasks to speed u
 $ npm install --global gulp-cli
 ```
 
-Install dependencies:
+Install Scaffold II dependencies:
 
 ```
 npm install
@@ -123,8 +125,8 @@ gulp clearCache
 
 ## Credits
 
-- Images from Unsplash.com
-- Video content and gifs of Fortnite [game](https://www.epicgames.com/fortnite/en-US/home)
+- Images from [Unsplash](https://www.unsplash.com)
+- Video content and gifs of [Fortnite](https://www.epicgames.com/fortnite/en-US/home) game 
 
 ## License
 [MIT](LICENSE)
