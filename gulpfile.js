@@ -89,12 +89,12 @@ function jsTask(){
                 output: { beautify: false }
             }
         ))
-        // Add/write the sourcemaps
-        .pipe(sourcemaps.write('.'))
         // Rename to add .min to filename
         .pipe(rename({
             extname: '.min.js'
         }))
+        // Add/write the sourcemaps
+        .pipe(sourcemaps.write('.'))
         // Save compiled js to dist folder
         .pipe(gulp.dest('./dist/js'))
 }
