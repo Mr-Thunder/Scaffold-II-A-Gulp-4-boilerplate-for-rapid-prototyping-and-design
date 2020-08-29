@@ -27,9 +27,12 @@
     "gulp-notify": "^3.2.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
+    "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
     "jquery": "^3.5.1",
-    "node-normalize-scss": "^8.1.2"
+    "node-normalize-scss": "^8.1.2",
+    "postcss-reporter": "^6.0.1",
+    "stylelint": "^13.6.1"
   },
   "keywords": [
     "gulp",

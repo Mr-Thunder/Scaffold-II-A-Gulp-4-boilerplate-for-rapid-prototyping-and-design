@@ -14,6 +14,8 @@ const postcss = require('gulp-postcss'); // -
 const postcssPresetEnv = require('postcss-preset-env');
 const rename = require('gulp-rename');   // Adds .min to filename
 const sass = require('gulp-sass'); // - Transforms Sass into CSS
+const reporter = require('postcss-reporter');
+const stylelint = require('stylelint'); // - Lints Css for 
 const sourcemaps = require('gulp-sourcemaps'); // - Creates sourcemaps
 const { src, series, parallel, dest, } = require('gulp');
 const uglify = require('gulp-uglify'); // - Mminifies JS
@@ -33,6 +35,8 @@ function cssTask(){
     .on('error', sass.logError)
     // Pipe CSS through plugins using PostCSS
     .pipe(postcss([
+        stylelint({ }),
+        reporter({ clearMessages: true }),
         postcssPresetEnv({ 
             stage: 0
         }),
@@ -70,12 +74,13 @@ function cssTask(){
     .pipe(browserSync.stream());
 }
 
+
 //=====================================================================
 // Concatonate and minify JS
 //=====================================================================
 function jsTask(){ 
     // Locate js files in js folder and add Jquery
-    return gulp.src(['./src/js/**/*.js','./node_modules/jquery/dist/jquery.js'])
+    return gulp.src(['./node_modules/jquery/dist/jquery.js','./src/js/**/*.js'])
         // Initialise sourcemaps before compilation starts
         .pipe(sourcemaps.init())
         // Concatante/combine all js files
@@ -86,7 +91,10 @@ function jsTask(){
                 // Change if you do not which to minify
                 mangle: true,
                 compress: true,
-                output: { beautify: false }
+                output: { 
+                    beautify: true, 
+                    comments: true,
+                }
             }
         ))
         // Rename to add .min to filename
@@ -116,7 +124,7 @@ function htmlTask (done) {
     // Notify the files copied in the terminal
     .pipe(notify(file => {
         var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id); // Also available as `module.path`
+        var projectFolder = path.dirname(module.id); // Also available as `module.      path`
         return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
       })),
      done();
@@ -290,6 +298,7 @@ exports.htmlTask = htmlTask;
 exports.imageMin = imageMin;
 exports.jsTask = jsTask;
 exports.modernizrTask = modernizrTask;
+// exports.sassLint = sassLint;
 exports.watchTask = watchTask;
 
 // Gulp commands to be run in terminal
