@@ -191,7 +191,7 @@ function modernizrTask () {
 // Copy video to dist folder
 function copyVideo (done) {
     // Locate files
-    return gulp.src('./src/assets/video/*',)
+    return gulp.src('./src/assets/video/**/*',)
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist/assets/video'))
      // Notify the files copied in the terminal
@@ -264,7 +264,7 @@ function watchTask() {
     // When a file is added to the images folder run imagemin to optimise the file
     gulp.watch('./src/assets/images/*', imageMin);
     // When a video is added copy it to the dist video folder 
-    gulp.watch('./src/assets/video/*', copyVideo);
+    gulp.watch('./src/assets/video/**/**/*', copyVideo);
     // When a favicon is added to the dist favicon folder 
     gulp.watch('./src/assets/images/favicon/*', copyFavicon);
     // When a font is added copy it to the dist fonts folder 
