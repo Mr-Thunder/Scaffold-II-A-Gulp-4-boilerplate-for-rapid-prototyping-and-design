@@ -258,6 +258,7 @@ function watchTask() {
     gulp.watch('./src/scss/**/*.scss', cssTask);
     // When anything changes in the html files, update browser html and refresh page
     gulp.watch('./src/*.html', htmlTask).on('change', browserSync.reload);
+    gulp.watch('./src/pages/*.html', htmlTask).on('change', browserSync.reload);
     // When anything changes in the js files, update browser js and refresh page
     gulp.watch('./src/js/**/*.js', jsTask).on('change', browserSync.reload);
     // When a file is added to the images folder run imagemin to optimise the file
