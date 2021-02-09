@@ -37,6 +37,7 @@ function cssTask(){
     .pipe(postcss([
         stylelint({ }),
         reporter({ clearMessages: true }),
+          //The stage option determines which CSS features to polyfill, 0 (experimental) through 4 (stable)
         postcssPresetEnv({ 
             stage: 0
         }),
@@ -163,7 +164,7 @@ function modernizrTask () {
                 'setClasses',
                 "html5printshiv"
             ],
-            // Add browser tests
+             // Add browser tests find out more @ https://modernizr.com/
             'tests': [
                 'touchevents',
                 'backgroundcliptext',
@@ -298,7 +299,6 @@ exports.htmlTask = htmlTask;
 exports.imageMin = imageMin;
 exports.jsTask = jsTask;
 exports.modernizrTask = modernizrTask;
-// exports.sassLint = sassLint;
 exports.watchTask = watchTask;
 
 // Gulp commands to be run in terminal

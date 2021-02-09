@@ -23,12 +23,9 @@
       visibility: hidden;
     }
   }
-
-
   .rotate {
     animation: rotation 1s infinite linear;
   }
-  
   @keyframes rotation {
     from {
       transform: rotate(0deg);

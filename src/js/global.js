@@ -6,3 +6,4 @@ window.addEventListener("load", function () {
     loader.className += " hidden";
     
 });
+

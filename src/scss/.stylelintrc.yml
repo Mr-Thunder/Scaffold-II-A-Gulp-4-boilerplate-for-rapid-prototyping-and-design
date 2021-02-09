@@ -1,8 +1,7 @@
 files:
-  include: you-project/css/**/*.scss
+  include: /scss/**/*.scss
   ignore:
-    - "your-project/css/vendors/**.scss"
-    - "you-project/css/variables.scss"
+    - "/scss/vendors/**.scss"
 options:
   formatter: stylish
   merge-default-rules: false
