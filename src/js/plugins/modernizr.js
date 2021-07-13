@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.11.3
+ * modernizr v3.11.7
  * Build https://modernizr.com/download?-backgroundcliptext-cssfilters-cssmask-input-objectfit-placeholder-pointerevents-smil-supports-svg-svgclippaths-touchevents-video-videoautoplay-printshiv-setclasses-dontmin
  *
  * Copyright (c)
@@ -35,7 +35,7 @@
    * @access public
    */
   var ModernizrProto = {
-    _version: '3.11.3',
+    _version: '3.11.7',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -778,7 +778,7 @@
    *
    * Modernizr._prefixes is the internal list of prefixes that we test against
    * inside of things like [prefixed](#modernizr-prefixed) and [prefixedCSS](#-code-modernizr-prefixedcss). It is simply
-   * an array of kebab-case vendor prefixes you can use within your code.
+   * an array of hyphen-case vendor prefixes you can use within your code.
    *
    * Some common use cases include
    *
@@ -911,7 +911,7 @@
 
     ret = callback(div, rule);
     // If this is done after page load we don't want to remove the body so check if body exists
-    if (body.fake) {
+    if (body.fake && body.parentNode) {
       body.parentNode.removeChild(body);
       docElement.style.overflow = docOverflow;
       // Trigger layout so kinetic scrolling isn't disabled in iOS6+
@@ -1149,13 +1149,13 @@ This test will also return `true` for Firefox 4 Multitouch support.
   
 
   /**
-   * domToCSS takes a camelCase string and converts it to kebab-case
+   * domToCSS takes a camelCase string and converts it to hyphen-case
    * e.g. boxSizing -> box-sizing
    *
    * @access private
    * @function domToCSS
    * @param {string} name - String name of camelCase prop we want to convert
-   * @returns {string} The kebab-case version of the supplied name
+   * @returns {string} The hyphen-case version of the supplied name
    */
   function domToCSS(name) {
     return name.replace(/([A-Z])/g, function(str, m1) {
@@ -1206,12 +1206,12 @@ This test will also return `true` for Firefox 4 Multitouch support.
   ;
 
   /**
-   * cssToDOM takes a kebab-case string and converts it to camelCase
+   * cssToDOM takes a hyphen-case string and converts it to camelCase
    * e.g. box-sizing -> boxSizing
    *
    * @access private
    * @function cssToDOM
-   * @param {string} name - String name of kebab-case prop we want to convert
+   * @param {string} name - String name of hyphen-case prop we want to convert
    * @returns {string} The camelCase version of the supplied name
    */
   function cssToDOM(name) {
@@ -1233,7 +1233,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
   // on our modernizr element, but instead just testing undefined vs
   // empty string.
 
-  // Property names can be provided in either camelCase or kebab-case.
+  // Property names can be provided in either camelCase or hyphen-case.
 
   function testProps(props, prefixed, value, skipValueTest) {
     skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
@@ -1327,7 +1327,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
    * @example
    *
    * Modernizr._domPrefixes is exactly the same as [_prefixes](#modernizr-_prefixes), but rather
-   * than kebab-case properties, all properties are their Capitalized variant
+   * than hyphen-case properties, all properties are their Capitalized variant
    *
    * ```js
    * Modernizr._domPrefixes === [ "Moz", "O", "ms", "Webkit" ];
@@ -1442,7 +1442,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
    * @optionProp testAllProps
    * @access public
    * @function testAllProps
-   * @param {string} prop - String naming the property to test (either camelCase or kebab-case)
+   * @param {string} prop - String naming the property to test (either camelCase or hyphen-case)
    * @param {string} [value] - String of the value to test
    * @param {boolean} [skipValueTest=false] - Whether to skip testing that the value is supported when using non-native detection
    * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
@@ -1639,7 +1639,7 @@ extends beyond its border in CSS
    * @example
    *
    * Modernizr.prefixed takes a string css value in the DOM style camelCase (as
-   * opposed to the css style kebab-case) form and returns the (possibly prefixed)
+   * opposed to the css style hyphen-case) form and returns the (possibly prefixed)
    * version of that property that the browser actually supports.
    *
    * For example, in older Firefox...
@@ -1684,7 +1684,7 @@ extends beyond its border in CSS
    * var transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
    * ```
    *
-   * If you want a similar lookup, but in kebab-case, you can use [prefixedCSS](#modernizr-prefixedcss).
+   * If you want a similar lookup, but in hyphen-case, you can use [prefixedCSS](#modernizr-prefixedcss).
    */
   var prefixed = ModernizrProto.prefixed = function(prop, obj, elem) {
     if (prop.indexOf('@') === 0) {
@@ -1692,7 +1692,7 @@ extends beyond its border in CSS
     }
 
     if (prop.indexOf('-') !== -1) {
-      // Convert kebab-case to camelCase
+      // Convert hyphen-case to camelCase
       prop = cssToDOM(prop);
     }
     if (!obj) {
