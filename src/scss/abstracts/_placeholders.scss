@@ -1,0 +1,295 @@
+//======================================================
+// Responsive Breakpoints in Pixels
+//======================================================
+
+// Small phones (landscape phones, below 575px)
+$phone-small-width-px:575px;
+@mixin phone-small-bp-px {
+  @media (max-width:#{$phone-small-width-px}){
+    @content;
+  }
+}
+// large phones (landscape phones, 576px above)
+$phone-large-width-px:576px;
+@mixin phone-large-bp-px {
+  @media  (min-width:#{$phone-large-width-px}){
+    @content;
+  }
+}
+// large phones only (landscape phones, 577px to 767px)
+$phone-large-only-minwidth-px:577px;
+$phone-large-only-maxwidth-px:767px;
+@mixin phone-large-only-bp-px {
+  @media  (min-width:#{$phone-large-only-minwidth-px}) and (max-width:#{$phone-large-only-maxwidth-px})
+  {
+    @content;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+$tablet-small-width-px:768px;
+@mixin tablet-small-bp-px {
+  @media  (min-width:#{$tablet-small-width-px}){
+    @content;
+  }
+}
+// Large devices (desktops, 992px and up)
+$tablet-large-width-px:992px;
+@mixin tablet-large-bp-px {
+  @media  (min-width:#{$tablet-large-width-px}){
+    @content;
+  }
+}
+// Desktop (small  1200px and up)
+$desktop-small-width-px:1200px;
+@mixin desktop-small-bp-px {
+  @media  (min-width:#{$desktop-small-width-px}){
+    @content;
+  }
+}
+
+// Desktop (medium  1400px and up)
+$desktop-medium-width-px:1400px;
+@mixin desktop-medium-bp-px {
+  @media  (min-width:#{$desktop-medium-width-px}){
+    @content;
+  }
+}
+// Desktop (medium  2559px and up)
+$desktop-large-width-px:2400px;
+@mixin desktop-large-bp-px {
+  @media  (min-width:#{$desktop-large-width-px}){
+    @content;
+  }
+}
+// ------------------------------------------/
+// Testing Class
+// ------------------------------------------/
+
+.responsive-test-container-px:after{
+  content: ('');
+  background: white;
+  padding: 1em;
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+}
+
+@include phone-small-bp-px {
+  .responsive-test-container-px {
+      background: deepskyblue;
+  }
+  .responsive-test-container-px:after{
+    content: ('phone-small: below 575px');
+  }
+}
+@include phone-large-bp-px {
+  .responsive-test-container-px {
+      background: silver;
+  }
+  .responsive-test-container-px:after{
+    content: ('phone-large: above 576px');
+  }
+}
+@include phone-large-only-bp-px {
+  .responsive-test-container-px {
+      background: olive;
+  }
+  .responsive-test-container-px:after{
+    content: ('phone-large: above 576px');
+  }
+}
+@include phone-large-only-bp-px {
+  .responsive-test-container-px {
+      background: goldenrod;
+  }
+  .responsive-test-container-px:after{
+    content: ('phone-large-only: 577px to 777px');
+  }
+}
+@include tablet-small-bp-px {
+  .responsive-test-container-px {
+      background: tomato;
+  }
+  .responsive-test-container-px:after{
+    content: ('tablet-small: above 768px');
+  }
+}
+@include tablet-large-bp-px {
+  .responsive-test-container-px {
+    background: gold;
+  }
+  .responsive-test-container-px:after{
+    content: ('tablet-large: above 992px');
+  }
+}
+@include desktop-small-bp-px {
+  .responsive-test-container-px {
+      background: rebeccapurple;
+  }
+  .responsive-test-container-px:after{
+    content: ('desktop-small: above 1200px');
+  }
+}
+@include desktop-medium-bp-px {
+  .responsive-test-container-px {
+      background: greenyellow;
+  }
+  .responsive-test-container-px:after{
+    content: ('desktop-medium: above 1400px');
+  }
+}
+@include desktop-large-bp-px {
+  .responsive-test-container-px {
+      background: saddlebrown;
+  }
+  .responsive-test-container:after{
+    content: ('desktop-large: above 2400px');
+  }
+}
+
+//======================================================
+// Responsive Breakpoints in EMS with Mixins
+//======================================================
+
+// Small devices (landscape phones, 576px and below)
+$phone-small-width:35.9375em;
+@mixin phone-small-bp {
+  @media (max-width:#{$phone-small-width}){
+    @content;
+  }
+}
+
+// large phones (landscape phones, 576px above)
+$phone-large-width:36em;
+@mixin phone-large-bp {
+  @media  (min-width:#{$phone-large-width}){
+    @content;
+  }
+}
+
+// large phones only (landscape phones, 577px to 767px)
+$phone-large-only-minwidth:36.063em;
+$phone-large-only-maxwidth:47.938em;
+@mixin phone-large-only-bp {
+  @media  (min-width:#{$phone-large-only-minwidth}) and (max-width:#{$phone-large-only-maxwidth})
+  {
+    @content;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+$tablet-small-width:48em;
+@mixin tablet-small-bp {
+  @media  (min-width:#{$tablet-small-width}){
+    @content;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+$tablet-large-width:62em;
+@mixin tablet-large-bp {
+  @media  (min-width:#{$tablet-large-width}){
+    @content;
+  }
+}
+
+// Desktop (small  1200px and up)
+$desktop-small-width:75em;
+@mixin desktop-small-bp {
+  @media  (min-width:#{$desktop-small-width}){
+    @content;
+  }
+}
+
+// Desktop (medium  1400px and up)
+$desktop-medium-width:87.5em;
+@mixin desktop-medium-bp {
+  @media  (min-width:#{$desktop-medium-width}){
+    @content;
+  }
+}
+
+// Desktop (medium  2400px and up)
+$desktop-large-width:150em;
+@mixin desktop-large-bp {
+  @media  (min-width:#{$desktop-large-width}){
+    @content;
+  }
+}
+
+// -------------------------------------------
+// Testing Class
+// ------------------------------------------/
+.responsive-test-container-em:after{
+  content: ('');
+  background: white;
+  padding: 1em;
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+}
+@include phone-small-bp{
+  .responsive-test-container-em {
+    background: deepskyblue;
+  }
+  .responsive-test-container-em:after{
+    content: ('phone-small: below 35.9375em(575px)');
+  }
+}
+@include phone-large-bp {
+  .responsive-test-container-em {
+      background: silver;
+  }
+  .responsive-test-container-em:after{
+    content: ('phone-large: above 36em(576px)');
+  }
+}
+@include phone-large-only-bp {
+  .responsive-test-container-em {
+      background: lime;
+  }
+  .responsive-test-container-em:after{
+    content: ('phone-large: above 36em(576px)');
+  }
+}
+@include tablet-small-bp {
+  .responsive-test-container-em {
+      background: tomato;
+  }
+  .responsive-test-container-em:after{
+    content: ('tablet-small: above 48em(768px)');
+  }
+}
+@include tablet-large-bp {
+  .responsive-test-container-em {
+    background: gold;
+  }
+  .responsive-test-container-em:after{
+    content: ('tablet-large: above 62em(992px)');
+  }
+}
+@include desktop-small-bp {
+  .responsive-test-container-em {
+      background: rebeccapurple;
+  }
+  .responsive-test-container-em:after{
+    content: ('desktop-small: above 75em(1200px)');
+  }
+}
+@include desktop-medium-bp {
+    .responsive-test-container-em {
+        background: greenyellow;
+    }
+    .responsive-test-container-em:after{
+      content: ('desktop-medium: above 87.5em(1400px)');
+    }
+}
+@include desktop-large-bp {
+  .responsive-test-container-em {
+      background: saddlebrown;
+  }
+  .responsive-test-container:after{
+    content: ('desktop-large: above 150em(2400px)');
+  }
+}
