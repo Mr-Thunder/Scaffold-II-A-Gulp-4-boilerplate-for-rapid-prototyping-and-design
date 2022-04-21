@@ -56,7 +56,7 @@ $desktop-medium-width-px:1400px;
   }
 }
 // Desktop (medium  2559px and up)
-$desktop-large-width-px:2400px;
+$desktop-large-width-px:200px;
 @mixin desktop-large-bp-px {
   @media  (min-width:#{$desktop-large-width-px}){
     @content;
