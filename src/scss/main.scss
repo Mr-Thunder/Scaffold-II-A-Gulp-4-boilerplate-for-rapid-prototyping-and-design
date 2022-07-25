@@ -25,23 +25,6 @@
 @import "themes/theme";
 @import "themes/admin";
 
-.example {
-    display: grid;
-    transition: all .5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
-}
-
-.cssnext {
-  background: color(red alpha(-10%));
-}
-
-.testing {
-  width: percentage(5/7);
-}
-
-
-
 body {
   font-family: $futura-pt;
   font-family:$freight-big-pro;
@@ -56,13 +39,8 @@ h1, h3{
   font-weight: 100;
   color: hotpink;
   text-transform: uppercase;
+  word-break: break-word;
 }
-.wrapper{
-  width: 100%;
-  max-width: 81rem;
-  margin: 4em auto;
-}
-
 svg{
   width: 25%;
   height: auto;

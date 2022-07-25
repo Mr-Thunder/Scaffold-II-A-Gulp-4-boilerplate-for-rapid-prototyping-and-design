@@ -34,3 +34,11 @@
       transform: rotate(359deg);
     }
   }
+  .no-scroll{
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+  }
+  .no-scroll.hidden{
+    overflow-y: scroll !important;
+    overflow-x: auto !important;
+  }

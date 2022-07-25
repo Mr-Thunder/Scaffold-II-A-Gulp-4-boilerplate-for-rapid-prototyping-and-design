@@ -19,7 +19,7 @@
         <script src="js/all.min.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" href=" https://cdnjs.cloudflare.com/ajax/libs/pace/0.7.8/themes/black/pace-theme-big-counter.min.css" />
     </head>
-    <body>
+    <body class="no-scroll">
         <div class="loader">
             <div>
                 <img class="size-auto rotate align-centre" src="assets/images/logo.svg" alt="">
@@ -27,163 +27,175 @@
             </div>
         </div>
         <div class="wrapper">
-            <div class="align-centre row">
-                <svg version="1.1" id="thunder-symbol" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
-                    viewBox="0 0 838.6 863.7" xml:space="preserve" width="100%" height="auto">
-                    <path class="flash-one" fill="transparent" d="M829.3 418.6c0 226.7-183.8 410.6-410.5 410.6S8.2 645.4 8.2 418.6 192 8.1 418.7 8.1s410.6 183.8 410.6 410.5z" />
-                    <path class="symbol-background" fill="#0FF" d="M774.2 212.6C716.8 114 619.7 41.5 504.7 17l-77.4 195.5h346.9zM92.9 418.8l50.4-304.7C60.2 189.3 8 298 8 418.8 8 585.1 106.8 728.4 248.9 793l116.8-374.1-272.8-.1zm691.8-186.9L299.5 812.1c37.8 11.4 77.8 17.6 119.3 17.6 226.9 0 410.8-183.9 410.8-410.8 0-67.4-16.2-130.9-44.9-187z" />
-                </svg>
-            </div>
-            <div class="cssgrid-1col-centre row align-centre">
-                <h1 class="giant">
-                    Scaffold II
-                </h1>
-                <p class="title-large">A Gulp 4 boilerplate for rapid prototyping and design</p>
-            </div>
-            <div class="cssgrid-2col row">
-                <div>
+            <div class="grid-col-12">
+                <div class="grid-item-span-12 align-centre">
+                    <svg version="1.1" id="thunder-symbol" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+                        viewBox="0 0 838.6 863.7" xml:space="preserve" width="100%" height="auto">
+                        <path class="flash-one" fill="transparent" d="M829.3 418.6c0 226.7-183.8 410.6-410.5 410.6S8.2 645.4 8.2 418.6 192 8.1 418.7 8.1s410.6 183.8 410.6 410.5z" />
+                        <path class="symbol-background" fill="#0FF" d="M774.2 212.6C716.8 114 619.7 41.5 504.7 17l-77.4 195.5h346.9zM92.9 418.8l50.4-304.7C60.2 189.3 8 298 8 418.8 8 585.1 106.8 728.4 248.9 793l116.8-374.1-272.8-.1zm691.8-186.9L299.5 812.1c37.8 11.4 77.8 17.6 119.3 17.6 226.9 0 410.8-183.9 410.8-410.8 0-67.4-16.2-130.9-44.9-187z" />
+                    </svg>
+                </div>
+                <div class="grid-item-span-12 align-centre">
+                    <h1 class="giant">
+                        Scaffold II
+                    </h1>
+                    <p class="title-large">A Gulp 4 boilerplate for rapid prototyping and design</p>
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp 4</h1>
                     <p>Gulp is a build system or task runner that automates common tasks.</p>
                     <a class="micro" href="https://gulpjs.com/" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-sass</h1>
                     <p>Transforms CSS into <a href="http://https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS</a>, using the SAAS <a href="http://https://sass-guidelin.es/#architecture" target="_blank" rel="noopener noreferrer">7-1 pattern</a> file architecture.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-sass" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>browserSync</h1>
                     <p>Allows live reload and browser synchronisation across multiple devices simultaneously</p>
                     <a class="micro" href="https://www.browsersync.io/" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-imagemin</h1>
                     <p>Minifies images. Compresses GIF with <a href="https://github.com/imagemin/imagemin-gifsicle" target="_blank">Gifsicle</a>, compresses JPEG withtr <a href="https://github.com/imagemin/imagemin-mozjpeg" target="_blank">Mozjpeg</a>, compresses PNG with <a href="https://github.com/imagemin/imagemin-optipng" target="_blank">Optipng</a> and compresses SVG with <a href="https://github.com/imagemin/imagemin-svgo" target="_blank">SVGO</a>.</p>
                     <a class="micro" href="https://github.com/sindresorhus/gulp-imagemin" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-modernizr</h1>
                     <p>Detects features in the user's browser.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-modernizr" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-uglify</h1>
                     <p> Minifies JS.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-uglify" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-rename</h1>
                     <p> Allows renaming of files to add .min </p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-rename" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>Jquery</h1>
                     <p>jQuery small JavaScript library, that will be updated to the latest version via NPM</p>
                     <a class="micro" href="https://www.npmjs.com/package/jquery" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>node-normalize-scss</h1>
                     <p>Adds CSS reset for browsers<p>
                     <a class="micro" href="https://github.com/necolas/normalize.css" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-notify</h1>
                     <p>Allows notification messages in the terminal to give extra information and feedback on files that are being copied etc.</p>
                     <a class="micro" href="https://github.com/mikaelbr/gulp-notify" target="_blank">More Info</a>
                 </div>
-                <div>
+                <div class="grid-item-span-6">
                     <h1>cssnano</h1>
                     <p>Minifies CSS</p>
                     <a class="micro" href="https://cssnano.co/" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>postcss</h1>
                     <p>PostCSS pipes CSS through other plugins such as Autoprefixer.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-postcss" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>autoprefixer</h1>
                     <p>Adds vendor prefixes to CSS</p>
                     <a class="micro" href="https://www.npmjs.com/package/autoprefixer" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-sourcemaps</h1>
                     <p>Sourcemaps allow the browser to map CSS and JS generated by Sass and Uglify back to the original source file.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-sourcemaps" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1 class="">cache</h1>
                     <p>A temp file based caching proxy, used to stop repeating Imagemin optimisations</p>
                     <a class="micro" href="https://github.com/jgable/gulp-cache" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1 class="">del</h1>
                     <p>Allows cleaning and deleting of generated files.</p>
                     <a class="micro" href="https://www.npmjs.com/package/del" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-htmlmin</h1>
                     <p> Minifies HTML</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-htmlmin" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>gulp-concat</h1>
                     <p>Merges JS files.</p>
                     <a class="micro" href="https://www.npmjs.com/package/gulp-concat" target="_blank">More Info</a>
-
+                </div>
+                <div class="grid-item-span-6">
                     <h1>PostCSS-Preset-Env</h1>
                     <p>Use tomorrow’s CSS today.</p>
                     <a class="micro" href="https://preset-env.cssdb.org/" target="_blank">More Info</a>
                 </div>
-            </div>
-            <div class="cssgrid-1col-centre row align-centre">
-                <h1 class="giant">
-                    Optimisations
-                </h1>
-                <p class="title-large">Check out those sweet, sweet, file size savings.
-                </p>
-            </div>
-            <div class="cssgrid-2col row">
-                <figure>
+                <div class="grid-item-span-12 align-centre">
+                    <h1 class="giant">
+                        Optimisations
+                    </h1>
+                    <p class="title-large">Check out those sweet, sweet, file size savings.</p>
+                </div>
+                <figure class="grid-item-span-12">
                     <img class="size-auto" src="assets/images/beautiful-snipe.gif" alt="Beautiful Snipe">
                     <figcaption>
                         <p>.gif (saved 200 kB - 2.1%)</p>
                     </figcaption>
                 </figure>
-                <figure>
+                <figure class="grid-item-span-12">
                     <img class="size-auto" src="assets/images/double-snipe.gif" alt="Double Snipe">
                     <figcaption>
                         <p>gif (saved 1.06 MB - 11%)</p>
                     </figcaption>
                 </figure>
-            </div>
-            <div class="cssgrid-1col row">
-                <figure>
+                <figure class="grid-item-span-12">
                     <img class="size-auto" src="assets/images/prometheus-2012-film-still.jpg"
                         alt="Prometheus (2012)  film still">
                     <figcaption>
                         <p>jpg (saved 2.57 MB - 72.6%)</p>
                     </figcaption>
                 </figure>
-                <figure>
+                <figure class="grid-item-span-12">
                     <img class="size-auto" src="assets/images/installation.jpg" alt="Prometheus (2012)  film still">
                     <figcaption>
                         <p>jpg (saved 15.7 kB - 20.4%)</p>
                     </figcaption>
                 </figure>
-            </div>
-            <div class="cssgrid-2col row">
-                <figure>
+                <figure class="grid-item-span-6">
                     <img class="size-auto" src="assets/images/logo.png"
                         alt="Prometheus (2012)  film still">
                     <figcaption>
                         <p>png (saved 15.6 kB - 56.6%)</p>
                     </figcaption>
                 </figure>
-                <figure>
+                <figure class="grid-item-span-6">
                     <img class="size-auto" src="assets/images/logo.svg" alt="Prometheus (2012)  film still">
                     <figcaption>
                         <p>svg (saved 263 B - 29.8%)</p>
                     </figcaption>
                 </figure>
-            </div>
-            <div class="cssgrid-2col-centre row">
-                <figure>
-                    <video class="video-responsive" src="assets/video/quick-scope.mp4" type="video/mp4" controls loop></video>
-                    <figcaption>
-                        <p>Waiting on a Gulp video compression module</p>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <video class="video-responsive" src="assets/video/255m-snipe.mp4" type="video/mp4" controls loop></video>
-                    <figcaption>
-                        <p>mp4 (saved 0 B - 0%)</p>
-                    </figcaption>
-                </figure>
+                <div class="grid-item-span-6">
+                    <figure>
+                        <video class="video-responsive" src="assets/video/quick-scope.mp4" type="video/mp4" controls loop></video>
+                        <figcaption>
+                            <p>Waiting on a Gulp video compression module</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="grid-item-span-6">
+                    <figure>
+                        <video class="video-responsive" src="assets/video/255m-snipe.mp4" type="video/mp4" controls loop></video>
+                        <figcaption>
+                            <p>mp4 (saved 0 B - 0%)</p>
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
     </body>

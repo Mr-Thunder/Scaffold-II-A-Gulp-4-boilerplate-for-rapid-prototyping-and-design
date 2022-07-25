@@ -1,118 +1,174 @@
 //======================================================
-// Widths
-//======================================================
-.width10 {
-    width: 10%;
-}
-
-.width15 {
-    width: 15%;
-}
-
-.width20 {
-    width: 20%;
-}
-
-.width25 {
-    width: 25%;
-}
-
-.width30 {
-    width: 30%;
-}
-
-.width33 {
-    width: 33.3333%;
-}
-
-.width50 {
-    width: 50%;
-}
-
-.width66 {
-    width: 66.6666%;
-}
-
-.width70 {
-    width: 70%;
-}
-
-.width75 {
-    width: 75%;
-}
-
-.width80 {
-    width: 80%;
-}
-
-.width100 {
-    width: 100%;
-}
-
-.height100 {
-    height: 100vh;
-}
-
-//======================================================
-// Flex
-//======================================================
-.flex {
-    display: flex;
-}
-
-.flex-left{
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-}
-.flex-centre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-centre-right {
-    display: flex;
-    justify-content:flex-end;
-    align-items: center;
-}
-.flex-centre-left {
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-}
-
-.flex-centre-reverse {
-    display: flex;
-    align-items: center;
-    justify-items:center;
-    flex-direction: row-reverse;
-}
-
-
-.flex-col-3 {
-    display: flex;
-}
-
-.flex-centre-col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-}
-
-.flex-centre-col-left {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-flow: column;
-}
-
-//======================================================
 // Grids
 //======================================================
+.wrapper{
+    @at-root #{&} {
+        @include phone-small-bp{
+            margin:0 6rem;
+        }
+        @include phone-large-bp {
+            margin:0 9rem;
+        }
+        @include tablet-small-bp {
+            margin: 0 16rem;
+        }
+        @include desktop-small-bp{
+            margin:0 16rem;
+        }
+        @include desktop-medium-bp{
+            margin:0 18rem;
+        }
+        @include desktop-large-bp{
+            margin:0 24rem;
+        }
+    }
+}
+@include phone-small-bp{
+    :root{
+    --gap-value:2rem;
+    --padding-value:2rem;
+    }
+}
+@include phone-large-bp{
+    :root{
+    --gap-value:2rem;
+    --padding-value:2rem;
+    }
+}
+@include tablet-small-bp{
+    :root{
+        --gap-value:2rem;
+        --padding-value:2rem;
+    }
+}
+@include tablet-large-bp{
+    :root{
+        --gap-value:2rem;
+        --padding-value:2rem;
+    }
+}
+@include desktop-small-bp{
+    :root{
+        --gap-value:2rem;
+        --padding-value:2rem;
+    }
+}
+@include desktop-medium-bp{
+    :root{
+        --gap-value:2rem;
+        --padding-value:2rem;
+    }
+}
+@include desktop-large-bp{
+    :root{
+        --gap-value:2rem;
+        --padding-value:2rem;
+    }
+}
+
+.grid-col-12{
+    display: grid;
+    gap: var(--gap-value);
+    padding: var(--padding-value);
+    @at-root #{&}{
+        @include phone-small-bp {
+            grid-template-columns: 1fr;
+        }
+        @include phone-large-bp {
+            grid-template-columns: repeat(12, 1fr);
+            .grid-item-span-2{
+                grid-column: span 2;
+            }
+            .grid-item-span-3{
+                grid-column: span 3;
+            }
+            .grid-item-span-4{
+                grid-column: span 4;
+            }
+            .grid-item-span-2-centre{
+                grid-column: 2 / span 3;
+            }
+            .grid-item-span-2-offset{
+                grid-column: 2 / span 2;
+            }
+            .grid-item-span-3-centre{
+                grid-column: 3 / span 2;
+            }
+            .grid-item-span-3-offset{
+                grid-column: 2 / span 3;
+            }
+            .grid-item-span-4-centre{
+                grid-column: 2 / span 4;
+            }
+            .grid-item-span-4-offset{
+                grid-column: 3 / span 4;
+            }
+            .grid-item-span-4-centre-solo{
+                grid-column: 5 / span 4;
+            }
+            .grid-item-span-4-col-4-centre{
+                grid-column: 4 / span 6;
+            }
+            .row-span-2{
+                grid-row: 1 / span 2;
+            }
+            .row-span-3{
+                grid-row: 1 / span 3;
+            }
+            .grid-item-span-5{
+                grid-column: span 5;
+            }
+            .grid-item-span-5-centre-solo{
+                grid-column: 4 / span 5;
+            }
+            .grid-item-span-5-centre{
+                grid-column: 2 / span 5;
+            }
+            .grid-item-span-6{
+                grid-column: span 6;
+            }
+            .grid-item-span-6-centre{
+                grid-column: 4 / span 6;
+            }
+            .grid-item-span-7{
+                grid-column: span 7;
+            }
+            .grid-item-span-8{
+                grid-column: span 8;
+            }
+            .grid-item-span-8-centre{
+                grid-column: 3 / span 8;
+            }
+            .grid-item-span-9{
+                grid-column: span 9;
+            }
+            .grid-item-span-10{
+                grid-column: span 10;
+            }
+            .grid-item-span-10-centre{
+                grid-column: 3 / span 8;
+            }
+            .grid-item-span-11{
+                grid-column: span 11;
+            }
+            .grid-item-span-12{
+                grid-column: span 12;
+            }
+            .grid-align-center{
+                align-self:center;
+            }
+            .grid-align-end{
+                align-self:end;
+            }
+            .grid-align-start{
+                align-self:start;
+            }
+        }
+    }
+}
+
 .row {
-margin: 1em 1em 1em 1em;
+    margin: 1em 1em 1em 1em;
 }
 
 .grid-col-3 {
@@ -297,5 +353,29 @@ margin: 1em 1em 1em 1em;
     .cssgrid-4col,
     .cssgrid-5col {
         grid-template-columns: repeat(1fr);
+    }
+}
+
+.wrapper{
+    margin: 0 12rem;
+    @at-root #{&} {
+        @include phone-small-bp{
+            margin:0 7.8rem 0 1.8rem;
+        }
+        @include phone-large-bp {
+            margin:0 9rem 0 5rem;
+        }
+        @include tablet-small-bp {
+            margin: 0 16rem 0 6rem;
+        }
+        @include desktop-small-bp{
+            margin:0 16rem 0 7rem;
+        }
+        @include desktop-medium-bp{
+            margin:0 18rem;
+        }
+        @include desktop-large-bp{  
+            margin:0 24rem;
+        }
     }
 }
