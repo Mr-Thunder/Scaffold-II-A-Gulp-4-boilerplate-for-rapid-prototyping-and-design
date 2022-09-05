@@ -13,11 +13,11 @@
   "author": "Mr-Thunder",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "^10.4.8",
     "browser-sync": "^2.27.10",
     "browserlist": "^1.0.1",
-    "caniuse-lite": "^1.0.30001370",
-    "cssnano": "^5.1.12",
+    "caniuse-lite": "^1.0.30001390",
+    "cssnano": "^5.1.13",
     "del": "^6.1.1",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
@@ -29,13 +29,13 @@
     "gulp-sass": "^5.1.0",
     "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^3.0.0",
-    "jquery": "^3.6.0",
+    "jquery": "^3.6.1",
     "node-normalize-scss": "^8.1.2",
     "node-sass": "^7.0.1",
-    "postcss": "^8.4.14",
-    "postcss-preset-env": "^7.7.2",
+    "postcss": "^8.4.16",
+    "postcss-preset-env": "^7.8.0",
     "postcss-reporter": "^7.0.5",
-    "stylelint": "^14.9.1"
+    "stylelint": "^14.11.0"
   },
   "keywords": [
     "gulp",
