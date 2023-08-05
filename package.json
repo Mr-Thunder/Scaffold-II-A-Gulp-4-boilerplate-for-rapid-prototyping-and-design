@@ -24,7 +24,6 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-modernizr": "^4.0.4",
-    "gulp-notify": "^4.0.0",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-sass-lint": "^1.4.0",

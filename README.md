@@ -15,7 +15,6 @@ Scaffold II is a design focused gulp boilerplate that automates tasks to speed u
 - [gulp-rename](https://www.npmjs.com/package/gulp-rename) Allows renaming of files to add .min
 - [Jquery](https://www.npmjs.com/package/jquery) jQuery is a JavaScript library, that will be updated to the latest version via NPM
 - [node-normalize-scss](https://github.com/necolas/normalize.css) Adds CSS reset for browsers via NPM
-- [gulp-notify](https://github.com/mikaelbr/gulp-notify) Allows notifcation messages in the terminal to give extra information and feedback on files that are being copied etc.
 - [cssnano](https://cssnano.co) Minifies CSS
 - [gulp-postcss](https://www.npmjs.com/package/gulp-postcss) PostCSS pipes CSS through other plugins such as Autoprefixer.
 - [autoprefixer](https://www.npmjs.com/package/autoprefixer) Adds vendor prefixes to CSS

@@ -8,9 +8,7 @@ const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin'); // - Minifies HTML
 const imagemin = require('gulp-imagemin'); // - Minifies images
 const modernizr = require('gulp-modernizr'); //  detects features in browser.
-const notify = require('gulp-notify'); // - Notifys messages in the terminal
-const path = require('path'); // - Gets Path for gulp-notify
-const postcss = require('gulp-postcss'); // -
+const postcss = require('gulp-postcss'); // 
 const postcssPresetEnv = require('postcss-preset-env');
 const rename = require('gulp-rename');   // Adds .min to filename
 var sass = require('gulp-sass')(require('node-sass')); // - Transforms Sass into CSS
@@ -79,7 +77,7 @@ function cssTask(){
 //=====================================================================
 // Concatonate and minify JS
 //=====================================================================
-function jsTask(){ 
+function jsTask(){
     // Locate js files in js folder and add Jquery
     return gulp.src(['./node_modules/jquery/dist/jquery.js','./src/js/**/*.js'])
         // Initialise sourcemaps before compilation starts
@@ -92,8 +90,8 @@ function jsTask(){
                 // Change if you do not which to minify
                 mangle: true,
                 compress: true,
-                output: { 
-                    beautify: true, 
+                output: {
+                    beautify: true,
                     comments: true,
                 }
             }
@@ -122,12 +120,6 @@ function htmlTask (done) {
     ))
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist'))
-    // Notify the files copied in the terminal
-    .pipe(notify(file => {
-        var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id); // Also available as `module.      path`
-        return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
-      })),
      done();
 }
 //=====================================================================
@@ -146,7 +138,7 @@ function imageMin(done) {
             })
         ],
         // Shows files optimastion results in the terminal
-        {verbose: true } 
+        {verbose: true }
     )))
     // Send optimised images to folder
     .pipe(gulp.dest('./dist/assets/images')),
@@ -195,11 +187,6 @@ function copyVideo (done) {
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist/assets/video'))
      // Notify the files copied in the terminal
-    .pipe(notify(file => {
-        var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id);
-        return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
-      })),
     done();
 }
 
@@ -209,12 +196,6 @@ function copyFonts (done) {
     return gulp.src('./src/assets/fonts/**/*')
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist/assets/fonts'))
-     // Notify the files copied in the terminal
-    .pipe(notify(file => {
-        var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id);
-        return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
-      })),
     done();
 }
 
@@ -224,12 +205,6 @@ function copyFavicon (done) {
     return gulp.src('./src/assets/images/favicon/*')
     // Copy the files to the dist folder
     .pipe(gulp.dest('./dist/assets/images/favicon'))
-    // Notify the files copied in the terminal
-    .pipe(notify(file => {
-        var destFolder = path.dirname(file.path);
-        var projectFolder = path.dirname(module.id);
-        return `Copied ${file.relative} to ${path.relative(projectFolder, destFolder)}`;
-      })),
     done();
 }
 
@@ -245,7 +220,7 @@ function watchTask() {
         debugInfo: true,
         logConnections: true,
         logPrefix: "Scaffold II",
-        notify: true,
+        // notify: true,
         // Syncs across multiple browsers
         ghostMode: {
             scroll: true,
@@ -263,11 +238,11 @@ function watchTask() {
     gulp.watch('./src/js/**/*.js', jsTask).on('change', browserSync.reload);
     // When a file is added to the images folder run imagemin to optimise the file
     gulp.watch('./src/assets/images/*', imageMin);
-    // When a video is added copy it to the dist video folder 
+    // When a video is added copy it to the dist video folder
     gulp.watch('./src/assets/video/**/**/*', copyVideo);
-    // When a favicon is added to the dist favicon folder 
+    // When a favicon is added to the dist favicon folder
     gulp.watch('./src/assets/images/favicon/*', copyFavicon);
-    // When a font is added copy it to the dist fonts folder 
+    // When a font is added copy it to the dist fonts folder
     gulp.watch('./src/assets/fonts/**/*', copyFonts);
 }
 
