@@ -379,3 +379,57 @@
         }
     }
 }
+//======================================================
+// Flex Utility Classes
+//======================================================
+.flex {
+    display: flex;
+}
+
+.flex-left{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-centre-right {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+.flex-centre-left {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.flex-centre-reverse {
+    display: flex;
+    align-items: center;
+    justify-items:center;
+    flex-direction: row-reverse;
+}
+
+
+.flex-col-3 {
+    display: flex;
+}
+
+.flex-centre-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.flex-centre-col-left {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+}

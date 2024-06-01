@@ -33,8 +33,12 @@ body {
   color: mistyrose;
   font-size: 16px;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
+html {
+  font-size: 62.5% // sets base font size to equivalent of 10px for easy rem calculation
+}
 h1, h3{
   font-weight: 100;
   color: hotpink;
